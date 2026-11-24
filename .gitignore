@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Editors / operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# GIS temporary and downloaded data (keep README files)
+data/raw/*
+!data/raw/README.md
+data/processed/*
+!data/processed/README.md
+*.qgz~
+*.qgs~
+*.gpkg-wal
+*.gpkg-shm
+*.aux.xml
+
+# Logs and generated outputs
+*.log
+build/
+dist/
