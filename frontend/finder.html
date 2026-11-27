@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="src/assets/icons/favicon.svg"><link rel="apple-touch-icon" href="src/assets/icons/favicon-180.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="src/css/tokens.css"><link rel="stylesheet" href="src/css/base.css"><link rel="stylesheet" href="src/css/components.css"><link rel="stylesheet" href="src/css/layouts.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<title>Community Finder – Clinic Locator</title>
+<script type="module" src="src/js/pages/finder.js"></script></head>
+<body>
+<div id="site-nav"></div>
+<main id="main" class="page finder">
+  <div class="hero"><div><h1>Find clinics near you</h1><p>Hospitals, health centers and clinics in Zomba District</p></div></div>
+  <button type="button" id="locate" class="btn btn--primary btn--block btn--lg"><span data-icon="pin" data-size="26"></span><span id="locate-label">Find Clinics Near Me</span></button>
+  <p id="geo-msg" class="field__error" role="alert"></p>
+  <p class="or-line">or search by name</p>
+  <div class="panel-box" id="place-mount"></div>
+  <div class="toolbar" id="toolbar" hidden>
+    <p id="count"></p>
+    <div class="seg" role="group" aria-label="View"><button type="button" class="btn" id="view-list" aria-pressed="true">List</button><button type="button" class="btn" id="view-map" aria-pressed="false">Map</button></div>
+  </div>
+  <div id="results"></div>
+  <div id="map-wrap" hidden><div id="map" class="map" role="region" aria-label="Map of nearby clinics. The list view is the text alternative."></div></div>
+</main>
+<div id="detail-mount"></div>
+</body></html>

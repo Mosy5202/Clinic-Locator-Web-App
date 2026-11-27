@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="src/assets/icons/favicon.svg"><link rel="apple-touch-icon" href="src/assets/icons/favicon-180.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="src/css/tokens.css"><link rel="stylesheet" href="src/css/base.css"><link rel="stylesheet" href="src/css/components.css"><link rel="stylesheet" href="src/css/layouts.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<title>GIS Dashboard – Clinic Locator</title>
+<script type="module" src="src/js/pages/dashboard.js"></script></head>
+<body>
+<div id="site-nav"></div>
+<main id="main" class="page">
+  <div class="hero"><div><h1>GIS Dashboard</h1><p>Clinic distribution and spatial analysis for Zomba District</p></div></div>
+  <section aria-label="Statistics"><div id="stats-error"></div><div class="tiles" id="tiles"></div></section>
+  <div class="dash">
+    <section aria-label="Distribution map. The results table is the text alternative." class="map-wrap"><div id="map" class="map"></div><div class="legend" id="legend"></div></section>
+    <aside class="panel-box" aria-label="Spatial analysis">
+      <h2>Spatial analysis</h2>
+      <div role="tablist" aria-label="Analysis type" class="tabs">
+        <button role="tab" class="tab" id="tab-nearest" data-tab="nearest" aria-selected="true" aria-controls="analysis-form">Nearest</button>
+        <button role="tab" class="tab" id="tab-within" data-tab="within" aria-selected="false" tabindex="-1" aria-controls="analysis-form">Within radius</button>
+      </div>
+      <form id="analysis-form" role="tabpanel" aria-labelledby="tab-nearest" class="form" novalidate>
+        <div id="place-mount"></div>
+        <p class="where where--empty" id="where" role="status"></p>
+        <p class="field__warn" id="loc-warn" role="status"></p>
+        <details class="advanced" id="advanced"><summary>Advanced: enter coordinates</summary>
+          <div class="grid-2">
+            <div class="field"><label for="lat">Latitude</label><input class="input" id="lat" inputmode="decimal" autocomplete="off" aria-describedby="lat-error"><p class="field__error" id="lat-error"></p></div>
+            <div class="field"><label for="lon">Longitude</label><input class="input" id="lon" inputmode="decimal" autocomplete="off" aria-describedby="lon-error"><p class="field__error" id="lon-error"></p></div>
+          </div>
+        </details>
+        <div class="field" id="radius-field" hidden><label for="radius">Radius (km)</label><input class="input" id="radius" inputmode="decimal" value="5" aria-describedby="radius-error"><p class="field__error" id="radius-error"></p></div>
+        <div class="btn-row"><button type="submit" class="btn btn--primary" id="run">Run analysis</button><button type="button" class="btn btn--secondary" id="reset">Reset</button></div>
+      </form>
+    </aside>
+  </div>
+  <section class="panel-box" aria-label="Results"><h2>Results</h2><div id="summary"></div><div id="table-wrap"></div></section>
+</main></body></html>
