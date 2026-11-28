@@ -1,38 +1,37 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clinic Locator</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="src/css/styles.css">
-</head>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="src/assets/icons/favicon.svg"><link rel="apple-touch-icon" href="src/assets/icons/favicon-180.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="src/css/tokens.css"><link rel="stylesheet" href="src/css/base.css"><link rel="stylesheet" href="src/css/components.css"><link rel="stylesheet" href="src/css/layouts.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<title>Clinic Locator – Zomba District, Malawi</title>
+<script type="module" src="src/js/pages/index.js"></script></head>
 <body>
-  <header class="site-header">
-    <div>
-      <h1>Clinic Locator</h1>
-      <p>Find nearby health facilities in the selected study area.</p>
-    </div>
-  </header>
-  <main class="page-layout">
-    <aside class="sidebar">
-      <h2>Find a facility</h2>
-      <p>Click a point on the map to choose a search location. Clinic search controls will be added here.</p>
-      <p class="notice">Distances in the first version represent straight-line proximity, not road travel time.</p>
-      <section id="results" aria-live="polite">
-        <h3>Results</h3>
-        <p>No search has been run yet.</p>
-      </section>
+<div id="site-nav"></div>
+<main id="main" class="page">
+  <div class="hero">
+    <div><h1>Find <span class="accent">Healthcare</span> Near You</h1><p>Search for clinics, hospitals and health centers in Zomba District</p></div>
+    <p class="pill"><span data-icon="shield" data-size="24"></span>Better Access. Healthier Communities.</p>
+  </div>
+  <div class="locator">
+    <aside aria-label="Search controls">
+      <details class="panel" open><summary><span data-icon="pin" data-size="24"></span>Search Location</summary><div class="panel__body" id="search-mount"></div></details>
+      <div class="promo"><span class="promo__badge" data-icon="stethoscope" data-size="34"></span><span>Healthcare for a Healthier Malawi</span></div>
     </aside>
-    <section class="map-panel" aria-label="Map of health facilities">
-      <div id="map"></div>
+    <section aria-label="Map of clinics. The results list is the text alternative." class="map-wrap">
+      <div id="map" class="map"></div><div class="legend" id="legend"></div>
     </section>
-  </main>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="src/js/api.js"></script>
-  <script src="src/js/map.js"></script>
-  <script src="src/js/app.js"></script>
-</body>
-</html>
+    <aside aria-label="Results">
+      <details class="panel sheet" id="panel-results" open><summary><span data-icon="list" data-size="24"></span><span id="results-title">Results</span></summary><div class="panel__body" id="results"></div></details>
+    </aside>
+  </div>
+</main>
+<footer class="site-footer">
+  <ul>
+    <li><span data-icon="pin" data-size="34"></span><div><strong>Interactive Map</strong><p>Explore clinic locations</p></div></li>
+    <li><span data-icon="bars" data-size="34"></span><div><strong>Spatial Analysis</strong><p>Understand coverage</p></div></li>
+    <li><span data-icon="users" data-size="34"></span><div><strong>Community Focus</strong><p>Health for all</p></div></li>
+  </ul>
+  <div class="site-footer__zomba"><img src="src/assets/icons/malawi-flag.svg" alt="Flag of Malawi"><div><p><strong>Zomba District</strong></p><p>Malawi</p></div></div>
+</footer>
+</body></html>

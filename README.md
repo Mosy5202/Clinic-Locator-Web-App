@@ -1,54 +1,60 @@
 # Clinic Locator Web App
 
-A student GIS project: a database-driven web application for locating health facilities in the selected study area (proposed default: Zomba District, Malawi).
+An interactive geospatial web application designed to improve healthcare accessibility. Users can enter an address or click directly on the map to find the nearest health facilities, visualize service coverage areas, and generate turn-by-turn travel routes.
 
-## Planned MVP
+## Features
 
-- Display health-facility locations on an interactive Leaflet map.
-- Let a user select a point on the map.
-- Find the nearest clinics to that point.
-- Find clinics within a user-selected radius (metres or kilometres).
-- Show each facility's name, type, and calculated straight-line distance.
+* **Interactive Location Input:** Search for a specific address or click anywhere on the map to set your starting point.
+* **Nearest Facility Search:** Uses spatial queries to identify and rank the closest clinics and hospitals.
+* **Service Area Visualization:** Displays coverage zones and catchment boundaries around health facilities.
+* **Travel Routing:** Calculates and renders travel routes and directions from the user's location to a selected clinic.
 
-**Important:** distances in the first version are straight-line proximity distances, not walking/road distances or travel times. The application is not a medical advice service and will not collect patient data.
+## Tech Stack
 
-## Technology
+* **Frontend:** HTML, CSS, JavaScript
+* **Mapping :** Leaflet
 
-- QGIS: inspect, clean, filter, and validate spatial datasets.
-- PostgreSQL + PostGIS: store facilities and execute spatial queries.
-- Python + Flask: expose the database through a small API.
-- HTML, CSS, JavaScript + Leaflet: web interface and map.
+## Getting Started
 
-## Repository layout
+Follow these steps to run the project locally on your machine.
+
+### Prerequisites
+
+* [Python 3](https://python.org) installed on your system
+* A modern web browser (Chrome, Firefox, Edge, Safari)
+
+### Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com
+   cd Clinic-Locator-Web-App
+   ```
+
+2. **Navigate to the frontend directory:**
+   ```bash
+   cd frontend
+   ```
+
+3. **Start the local development server:**
+   ```bash
+   python -m http.server 5500
+   ```
+   *(Note: Depending on your system configuration, you may need to use `python3` instead of `python`.)*
+
+4. **Open the application:**
+   Open your web browser and go to:
+   ```text
+   http://localhost:5500/index.html
+   ```
+
+## Frontend Structure
 
 ```text
-clinic-locator/
-├── backend/             # Flask API
-├── database/            # SQL schema, indexes, and database notes
-├── data/                # Data instructions; large/raw datasets stay out of Git
-├── docs/                # Architecture, API contract, and project documentation
-├── frontend/            # Leaflet web interface
-├── tests/               # Cross-component / integration tests
-├── .env.example         # Example configuration (no real secrets)
-├── .gitignore
-└── CONTRIBUTING.md
+Clinic-Locator-Web-App/
+├── frontend/
+│   ├── index.html
+│   ├── css/
+│   └── js/
+└── README.md
 ```
-
-## Getting started
-
-1. Read `docs/architecture.md`, `docs/api-contract.md`, and `CONTRIBUTING.md`.
-2. Copy `.env.example` to `.env` and fill in your local database settings. Never commit `.env`.
-3. Create a PostgreSQL database and enable PostGIS. Run the SQL files in `database/sql/` in numeric order.
-4. Prepare the facility dataset in QGIS and import the cleaned point layer into the `public.clinics` table. See `data/raw/README.md` and `database/README.md`.
-5. Start the API using the instructions in `backend/README.md`.
-6. Start the frontend using the instructions in `frontend/README.md`.
-
-Each member should work on a feature branch and open a pull request. See `CONTRIBUTING.md`.
-
-## Data and attribution
-
-Keep a record of the dataset name, download date, source URL, licence, coordinate reference system, processing steps, and known limitations. OpenStreetMap-derived data requires appropriate attribution and compliance with the ODbL. Do not commit large downloaded datasets unless the group has agreed that the size and licence permit it.
-
-## Project status
-
-This is the initial project scaffold, not a completed application. API search endpoints, database loading, and the clinic result display are to be implemented by the team.

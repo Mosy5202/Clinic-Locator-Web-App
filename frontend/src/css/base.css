@@ -1,0 +1,18 @@
+*,*::before,*::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: var(--fs-base)/var(--lh) var(--font); color: var(--ink); background: var(--bg); overflow-wrap: break-word; }
+h1,h2,h3 { color: var(--navy); line-height: 1.25; margin: 0 0 var(--s-3); }
+h1 { font-size: var(--fs-xl); } h2 { font-size: var(--fs-lg); } h3 { font-size: var(--fs-base); }
+p { margin: 0 0 var(--s-3); }
+img,svg,canvas { max-width: 100%; }
+:focus-visible { outline: var(--ring) solid var(--focus); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: absolute; left: var(--s-2); top: -100px; z-index: 2000; background: var(--surface); color: var(--navy);
+  padding: var(--s-3) var(--s-4); border-radius: var(--radius-sm); font-weight: 700; }
+.skip-link:focus { top: var(--s-2); }
+.page { max-width: 1600px; margin: 0 auto; padding: var(--s-4); }
+.scroll-x { overflow-x: auto; }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* Author display rules must not override the hidden attribute */
+[hidden] { display: none !important; }
