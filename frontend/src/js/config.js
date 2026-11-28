@@ -1,5 +1,5 @@
 // Single place for runtime configuration.
-export const API_BASE = "http://localhost:5000"; // Flask backend base URL
+export const API_BASE = "http://127.0.0.1:5000/api"; // Flask backend base URL
 export const MOCK_API = new URLSearchParams(location.search).get("mock") === "1"; // add ?mock=1 to the page address for labelled sample data. Never use in the final demo.
 
 export const MAP_DEFAULT = { center: [-15.38, 35.33], zoom: 11 };

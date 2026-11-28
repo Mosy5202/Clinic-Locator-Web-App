@@ -19,11 +19,11 @@ export async function request(path, params = {}, signal) {
 
 const t = (types) => types.join(",");
 export const getClinics = (types, signal) => request("/clinics", { type: t(types) }, signal);
-export const getNearest = ({ lat, lon, count = 3, types }, signal) => request("/nearest", { lat, lon, count, type: t(types) }, signal);
-export const getWithin = ({ lat, lon, radiusKm, types }, signal) => request("/within", { lat, lon, radius: Math.round(radiusKm * 1000), type: t(types) }, signal);
+export const getNearest = ({ lat, lon, count = 3, types }, signal) => request("/clinics/nearest", { lat, lon, limit: count, type: t(types) }, signal);
+export const getWithin = ({ lat, lon, radiusKm, types }, signal) => request("/clinics/within", { lat, lon, radius: Math.round(radiusKm * 1000), type: t(types) }, signal);
 export const getStats = (signal) => request("/stats", {}, signal);
 
-/* ---------- Place search: village / town / landmark name -> coordinates ---------- */
+/* Place search: village / town / landmark name - coordinates */
 const clean = (r) => ({ name: String(r.name || "").trim(), area: r.area ? String(r.area).trim() : "", lat: Number(r.lat), lon: Number(r.lon) });
 const valid = (p) => p.name && isFinite(p.lat) && isFinite(p.lon);
 
@@ -54,7 +54,7 @@ async function nominatim(q, signal) {
   }).filter(valid).filter((p) => { const k = `${p.name}|${p.lat.toFixed(3)}|${p.lon.toFixed(3)}`; return seen.has(k) ? false : seen.add(k); });
 }
 
-/* ---------- MOCK (sample data only; MOCK_API=false by default; never use in the final demo) ---------- */
+/* MOCK (sample data only; MOCK_API=false by default; never use in the final demo) */
 const ROWS = [
   [1, "Sample Hospital A", "Hospital", -15.385, 35.318], [2, "Sample Health Center B", "Health Center", -15.402, 35.345],
   [3, "Sample Clinic C", "Clinic", -15.37, 35.296], [4, "Sample Hospital D", "Hospital", -15.44, 35.28],
@@ -71,8 +71,8 @@ async function mockRequest(path, p, signal) { // MOCK ONLY: stands in for PostGI
   let rows = ROWS.filter((c) => ts.includes(KEY[c.facility_type]));
   if (path === "/clinics") return rows;
   rows = rows.map((c) => ({ ...c, distance_m: hav(+p.lat, +p.lon, c.lat, c.lon) })).sort((a, b) => a.distance_m - b.distance_m);
-  if (path === "/nearest") return rows.slice(0, +p.count || 3);
-  if (path === "/within") return rows.filter((c) => c.distance_m <= +p.radius);
+  if (path === "/clinics/nearest") return rows.slice(0, +p.count || 3);
+  if (path === "/clinics/within") return rows.filter((c) => c.distance_m <= +p.radius);
   throw new ApiError("Not found");
 }
 
